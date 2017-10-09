@@ -1,4 +1,5 @@
 ﻿using Dipapel.ConsoleTeste.Entities;
+using Dipapel.Core.EF.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace Dipapel.ConsoleTeste
     {
         static void Main(string[] args)
         {
-            var pedidos = new List<Pedido>();
+            var pedidoRepository = new PedidoRepository();
             string[] pedidosElo7 = {
 //            'Pedido; Comprador; Status Pedido; Data Pedido; Total Itens; Valor Pedido; Tipo Frete; Valor Frete'
                 "B965EF; Barbara Weinert; PAGO_ESPERANDO_VENDEDOR; 29 / 07 / 2017; 1; 139.95; PAC; 19.32",
@@ -42,9 +43,15 @@ namespace Dipapel.ConsoleTeste
                 pedidoAux.TipoFrete = campos[6];
                 pedidoAux.ValorFrete = 2.00; // hard code
 
-                pedidos.Add(pedidoAux);
+                pedidoRepository.Adicionar(pedidoAux);
 //                pedidoDao.Adicionar(pedidoAux);
             }
+
+            foreach (var pedido in pedidoRepository.Obter())
+            {
+                Console.WriteLine("Código: {0} - Comprador: {1}", pedido.Codigo, pedido.Comprador);
+            }
+
             Console.WriteLine("uhuuuuu");
 
             Console.ReadLine();

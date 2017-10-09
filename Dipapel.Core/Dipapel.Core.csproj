@@ -43,6 +43,8 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Contracts\IPedidoRepository.cs" />
     <Compile Include="Contracts\IRepository.cs" />
+    <Compile Include="EF\Repositories\PedidoRepository.cs" />
+    <Compile Include="EF\Repositories\Repository.cs" />
     <Compile Include="Entities\Pedido.cs" />
     <Compile Include="Entities\StatusPedido.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
