@@ -1,4 +1,5 @@
 ﻿using Dipapel.ConsoleTeste.Entities;
+using Dipapel.Core.EF;
 using Dipapel.Core.EF.Repositories;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,17 @@ namespace Dipapel.ConsoleTeste
     {
         static void Main(string[] args)
         {
+            var ctx = new DipapelDB();
+            //using (var ctx = new DipapelDB())
+            //{
+                //var alunos = ctx.Alunos.ToList();
+                //foreach (var aluno in alunos)
+                //{
+                //    Console.WriteLine("Código: {0} | Nome {1} | Sexo: {2}",
+                //        aluno.Codigo, aluno.Nome, aluno.Sexo);
+                //}
+            //}
+
             var pedidoRepository = new PedidoRepository();
             string[] pedidosElo7 = {
 //            'Pedido; Comprador; Status Pedido; Data Pedido; Total Itens; Valor Pedido; Tipo Frete; Valor Frete'
@@ -36,7 +48,7 @@ namespace Dipapel.ConsoleTeste
                 var pedidoAux = new Pedido();
                 pedidoAux.Codigo = campos[0];
                 pedidoAux.Comprador = campos[1];
-                pedidoAux.Status = new StatusPedido() { Codigo = campos[2] };
+                //pedidoAux.Status = new StatusPedido() { Codigo = campos[2] };
                 pedidoAux.DataPedido = campos[3];
                 pedidoAux.TotalItens = 2; // hard code
                 pedidoAux.ValorTotal = 1.00; // hard code

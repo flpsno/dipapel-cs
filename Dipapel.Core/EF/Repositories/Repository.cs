@@ -10,10 +10,12 @@ namespace Dipapel.Core.EF.Repositories
     public class Repository<T> : IRepository<T>
     {
         private List<T> _BancoDeDadosFake = new List<T>();
+        private readonly DipapelDB _ctx = new DipapelDB();
 
         public T Adicionar(T obj)
         {
-            _BancoDeDadosFake.Add(obj);
+//            _ctx.Set<T>().Add(obj);
+            _ctx.SaveChanges();
             return obj;
         }
 
