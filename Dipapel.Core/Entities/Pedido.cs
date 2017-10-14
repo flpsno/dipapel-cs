@@ -6,15 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dipapel.ConsoleTeste.Entities
+namespace Dipapel.Core.Entities
 {
     [Table("tblpedido")]
-    public class Pedido
+    public class Pedido: Entity
     {
         [Key]
-        [Column(TypeName = "varchar")]
-        [MaxLength(50)]
-        public string Codigo { get; set; }
+        public int Codigo { get; set; }
 
         [Column(TypeName = "varchar")]
         [MaxLength(50)]

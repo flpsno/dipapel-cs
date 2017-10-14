@@ -1,17 +1,24 @@
-﻿using Dipapel.Entidades;
+﻿using Dipapel.Core.EF;
+using Dipapel.Core.EF.Repositories;
+using Dipapel.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dipapel
+namespace Dipapel.Core.ConsoleTeste
 {
     class Program
     {
         static void Main(string[] args)
         {
+            var _ctx = new Repository<Pedido>();
 
+            _ctx.Adicionar(new Pedido { Comprador = "adfs", DataPedido = "adfasd", TipoFrete = "afdsf", TotalItens = 1, ValorFrete = 1.00, ValorTotal = 4.10});
+
+
+            var pedidoRepository = new PedidoRepository();
             string[] pedidosElo7 = {
 //            'Pedido; Comprador; Status Pedido; Data Pedido; Total Itens; Valor Pedido; Tipo Frete; Valor Frete'
                 "B965EF; Barbara Weinert; PAGO_ESPERANDO_VENDEDOR; 29 / 07 / 2017; 1; 139.95; PAC; 19.32",
@@ -26,7 +33,7 @@ namespace Dipapel
                 "AD6A40; karen; PEDIDO_ENVIADO; 01 / 06 / 2017; 1; 175.54; PAC; 31.27"
             };
 
-            var pedidoDao = new PedidoDAO();
+            // var pedidoDao = new PedidoDAO();
 
             foreach (var linha in pedidosElo7)
             {
@@ -35,31 +42,18 @@ namespace Dipapel
                 var pedidoAux = new Pedido();
                 pedidoAux.Codigo = campos[0];
                 pedidoAux.Comprador = campos[1];
-                pedidoAux.Status = StatusPedido.PEDIDO_ENVIADO; // hard code
+                //pedidoAux.Status = new StatusPedido() { Codigo = campos[2] };
                 pedidoAux.DataPedido = campos[3];
                 pedidoAux.TotalItens = 2; // hard code
                 pedidoAux.ValorTotal = 1.00; // hard code
                 pedidoAux.TipoFrete = campos[6];
                 pedidoAux.ValorFrete = 2.00; // hard code
 
-                pedidoDao.Adicionar(pedidoAux);
+                pedidoRepository.Adicionar(pedidoAux);
+                //                pedidoDao.Adicionar(pedidoAux);
             }
 
-            //var listaPedidos = pedidoDao.ObterTodos();
-            pedidoDao.ObterTodos()
-                .OrderBy(x => x.Comprador)
-                .ToList().ForEach(x =>
-                {
-                    var saida = new StringBuilder();
-                    saida.Append("================ novo pedido ====================");
-                    saida.Append("\nCodigo: " + x.Codigo + " - Comprador:" + x.Comprador);
-                    saida.Append("\nData Pedido: " + x.DataPedido);
-                    saida.Append("\nTipo Frete: " + x.TipoFrete);
-                    Console.WriteLine(saida.ToString());
-                });
 
-
-            Console.WriteLine("Total de Pedidos é: {0}", pedidoDao.TotalPedidos());
 
             Console.ReadLine();
 

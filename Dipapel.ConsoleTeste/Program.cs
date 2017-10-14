@@ -13,7 +13,19 @@ namespace Dipapel.ConsoleTeste
     {
         static void Main(string[] args)
         {
+
             var ctx = new DipapelDB();
+            ctx.Pedidos.Add(new Pedido {
+                Codigo = "teste",
+                Comprador = "teste",
+                DataPedido = DateTime.Now.ToString(),
+                TipoFrete = "sedex",
+                TotalItens = 1,
+                ValorFrete = 0.00,
+                ValorTotal = 0.00
+            });
+            ctx.SaveChanges();
+
             //using (var ctx = new DipapelDB())
             //{
                 //var alunos = ctx.Alunos.ToList();

@@ -1,4 +1,4 @@
-﻿using Dipapel.ConsoleTeste.Entities;
+﻿using Dipapel.Core.Entities;
 using Dipapel.Core.Contracts;
 using System;
 using System.Collections.Generic;
