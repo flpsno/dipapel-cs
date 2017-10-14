@@ -12,15 +12,31 @@ namespace Dipapel.Core.Entities
     public class Pedido: Entity
     {
         [Key]
-        public int Codigo { get; set; }
+        [Column("IDPEDIDO")]
+        public int Id { get; set; }
 
-        [Column(TypeName = "varchar")]
-        [MaxLength(50)]
+        [Column("CODIGO", TypeName ="varchar")]
+        [MaxLength(15)]
+        public string Codigo { get; set; }
+
+        [Column("COMPRADOR", TypeName = "varchar")]
+        [MaxLength(100)]
         public string Comprador { get; set; }
-        public string DataPedido { get; set; }
-        public byte TotalItens { get; set; }
+
+        [Column("DATA_PEDIDO", TypeName = "date")]       
+        public DateTime DataPedido { get; set; }
+
+        [Column("TOTAL_ITENS")]
+        public int TotalItens { get; set; }
+
+        [Column("VALOR_TOTAL", TypeName = "float")]        
         public double ValorTotal { get; set; }
+
+        [Column("TIPO_FRETE", TypeName = "varchar")]
+        [MaxLength(50)]
         public string TipoFrete { get; set; }
+
+        [Column("VALOR_FRETE", TypeName = "float")]
         public double ValorFrete { get; set; }
    //     public StatusPedido Status { get; set; }
     }

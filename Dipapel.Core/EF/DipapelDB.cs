@@ -26,7 +26,7 @@ namespace Dipapel.Core.EF
         protected override void Seed(DipapelDB context)
         {
             var pedidos = new List<Pedido> {
-                    new Pedido { Comprador = "teste", DataPedido = DateTime.Now.ToString(), TipoFrete = "sedex", TotalItens = 1,
+                    new Pedido { Codigo = "AFDS", Comprador = "teste", DataPedido = DateTime.Now, TipoFrete = "sedex", TotalItens = 1,
                     ValorFrete = 0.00, ValorTotal = 0.00}
             };
 
