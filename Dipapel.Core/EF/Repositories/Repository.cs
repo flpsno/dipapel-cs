@@ -37,7 +37,7 @@ namespace Dipapel.Core.EF.Repositories
 
         public IEnumerable<T> Obter()
         {
-            return new List<T>();//_BancoDeDadosFake;
+            return _ctx.Set<T>().ToList();
         }
 
         public T ObterById(int id)
