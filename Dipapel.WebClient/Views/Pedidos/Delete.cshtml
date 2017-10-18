@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Excluir Pedido</h2>
+<p>
+    Deseja realmente excluir o Pedido @(Model.Codigo + "?")
+</p>
+
+<form method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <button>Sim</button>
+    <a href="/Pedidos">Cancelar</a>
+</form>

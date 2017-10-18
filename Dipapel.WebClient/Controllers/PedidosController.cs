@@ -29,5 +29,24 @@ namespace Dipapel.WebClient.Controllers
             _ctx.Adicionar(pedido);
             return RedirectToAction("Index");
         }
+
+        public ActionResult Delete(int id)
+        {
+            var pedido = _ctx.ObterById(id);
+
+            if (pedido == null)
+                return HttpNotFound();
+
+            return View(pedido);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(Pedido pAux) {
+
+            var pedido = _ctx.ObterById(pAux.Id);
+            _ctx.Delete(pedido);
+
+            return RedirectToAction("Index");
+        }
     }
 }

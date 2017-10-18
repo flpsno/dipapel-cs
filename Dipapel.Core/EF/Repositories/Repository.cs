@@ -22,7 +22,8 @@ namespace Dipapel.Core.EF.Repositories
 
         public void Delete(T obj)
         {
-            throw new NotImplementedException();
+            _ctx.Set<T>().Remove(obj);
+            _ctx.SaveChanges();
         }
 
         public void Dispose()
@@ -42,7 +43,7 @@ namespace Dipapel.Core.EF.Repositories
 
         public T ObterById(int id)
         {
-            throw new NotImplementedException();
+            return _ctx.Set<T>().Find(id);
         }
     }
 }
