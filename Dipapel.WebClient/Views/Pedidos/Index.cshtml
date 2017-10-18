@@ -5,6 +5,10 @@
 
 <h2>Listagem dos Pedidos</h2>
 
+<div>
+    <a href="/Pedidos/Add">Adicionar Pedido</a>
+</div>
+
 <table class="table">
     <thead>
         <tr>
@@ -32,8 +36,7 @@
                 <td>@item.TipoFrete</td>
                 <td>@item.ValorFrete.ToString("0.00")</td>
             <td>
-                <a href="/Clientes/Edit/@item.Id">Editar</a>
-                <a href="/Clientes/Delete/@item.Id">Excluir</a>
+                <a href="/Clientes/Edit/@item.Id">Editar</a> / <a href="/Clientes/Delete/@item.Id">Excluir</a>
             </td>
         </tr>
         }

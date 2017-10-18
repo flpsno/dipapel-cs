@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Novo Cliente</h2>
+
+<form method="post">
+
+    <div>
+        <label>Código:</label>
+        <input autofocus type="text" name="Codigo" />
+    </div>
+
+    <div>
+        <label>Comprador:</label>
+        <input type="text" name="Comprador" />
+    </div>
+
+    <div>
+        <label>Data Pedido:</label>
+        <input type="date" name="DataPedido" />
+    </div>
+
+    <div>
+        <label>Total de Itens:</label>
+        <input type="number" min="0" name="TotalItens" />
+    </div>
+
+    <div>
+        <label>Valor Total:</label>
+        <input type="number" min="0" step="0.01" name="ValorTotal" />
+    </div>
+
+    <div>
+        <label>Tipo Frete:</label>
+        <input type="text" name="TipoFrete" />
+    </div>
+
+    <div>
+        <label>Valor Frete:</label>
+        <input type="number" min="0" step="0.01" name="ValorFrete" />
+    </div>
+
+    <button>Salvar</button>
+    <a href="/Pedidos">Cancelar</a>
+
+</form>
+
