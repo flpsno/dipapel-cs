@@ -7,43 +7,45 @@
 
 <form method="post">
 
-    <div>
+    <div class="form-group">
         <label>Código:</label>
-        <input autofocus type="text" name="Codigo" />
+        <input autofocus type="text" class="form-control" name="Codigo" />
     </div>
 
-    <div>
+    <div class="form-group">
         <label>Comprador:</label>
-        <input type="text" name="Comprador" />
+        <input type="text" class="form-control" name="Comprador" />
     </div>
 
-    <div>
+    <div class="form-group">
         <label>Data Pedido:</label>
-        <input type="date" name="DataPedido" />
+        <input type="date" class="form-control" name="DataPedido" />
     </div>
 
-    <div>
+    <div class="form-group">
         <label>Total de Itens:</label>
-        <input type="number" min="0" name="TotalItens" />
+        <input type="number" class="form-control" min="0" name="TotalItens" />
     </div>
 
-    <div>
+    <div class="form-group">
         <label>Valor Total:</label>
-        <input type="number" min="0" step="0.01" name="ValorTotal" />
+        <input type="number" class="form-control" min="0" step="0.01" name="ValorTotal" />
     </div>
 
-    <div>
+    <div class="form-group">
         <label>Tipo Frete:</label>
-        <input type="text" name="TipoFrete" />
+        <input type="text" class="form-control" name="TipoFrete" />
     </div>
 
-    <div>
+    <div class="form-group">
         <label>Valor Frete:</label>
-        <input type="number" min="0" step="0.01" name="ValorFrete" />
+        <input type="number" class="form-control" min="0" step="0.01" name="ValorFrete" />
     </div>
 
-    <button>Salvar</button>
-    <a href="/Pedidos">Cancelar</a>
+    <div class="form-group">
+        <button class="form-control btn btn-primary">Salvar</button>
+        <a href="/Pedidos">Cancelar</a>
+    </div>
 
 </form>
 
