@@ -30,6 +30,23 @@ namespace Dipapel.WebClient.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Edit(int id)
+        {
+            var pedido = _ctx.ObterById(id);
+            if (pedido == null)
+                return HttpNotFound();
+
+            return View(pedido);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Pedido pedido)
+        {
+            _ctx.Editar(pedido);
+
+            return RedirectToAction("Index");
+        }
+
         public ActionResult Delete(int id)
         {
             var pedido = _ctx.ObterById(id);

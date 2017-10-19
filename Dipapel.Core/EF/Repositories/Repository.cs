@@ -28,12 +28,14 @@ namespace Dipapel.Core.EF.Repositories
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _ctx.Dispose();
         }
 
         public T Editar(T obj)
         {
-            throw new NotImplementedException();
+            _ctx.Entry(obj).State = System.Data.Entity.EntityState.Modified;
+            _ctx.SaveChanges();
+            return obj;            
         }
 
         public IEnumerable<T> Obter()
