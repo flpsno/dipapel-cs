@@ -21,7 +21,7 @@ namespace Dipapel.Core.EF
         public DbSet<StatusPedido> StatusPedidos { get; set; }
     }
 
-    internal class CargaInicialDados : CreateDatabaseIfNotExists<DipapelDataContext>
+    public class CargaInicialDados : CreateDatabaseIfNotExists<DipapelDataContext>
     {
 
         protected override void Seed(DipapelDataContext context)
@@ -35,17 +35,17 @@ namespace Dipapel.Core.EF
 
             var pedidos = new List<Pedido> {
                     new Pedido { Codigo = "CODIGO1", Comprador = "teste", DataPedido = DateTime.Now, TipoFrete = "sedex",
-                        TotalItens = 1, ValorFrete = 0.00, ValorTotal = 0.00, StatusPedido = aguardandoPagamento},
+                        TotalItens = 1, ValorFrete = 0.00F, ValorTotal = 0.00F, StatusPedido = aguardandoPagamento},
                     new Pedido { Codigo = "CODIGO2", Comprador = "teste", DataPedido = DateTime.Now, TipoFrete = "sedex",
-                        TotalItens = 1, ValorFrete = 0.00, ValorTotal = 0.00, StatusPedido = pedidoEnviado},
+                        TotalItens = 1, ValorFrete = 0.00F, ValorTotal = 0.00F, StatusPedido = pedidoEnviado},
                     new Pedido { Codigo = "CODIGO3", Comprador = "teste", DataPedido = DateTime.Now, TipoFrete = "sedex",
-                        TotalItens = 1, ValorFrete = 0.00, ValorTotal = 0.00, StatusPedido = aguardandoConfirmacaoPagamento},
+                        TotalItens = 1, ValorFrete = 0.00F, ValorTotal = 0.00F, StatusPedido = aguardandoConfirmacaoPagamento},
                     new Pedido { Codigo = "CODIGO4", Comprador = "teste", DataPedido = DateTime.Now, TipoFrete = "sedex",
-                        TotalItens = 1, ValorFrete = 0.00, ValorTotal = 0.00, StatusPedido = aguardandoFrete},
+                        TotalItens = 1, ValorFrete = 0.00F, ValorTotal = 0.00F, StatusPedido = aguardandoFrete},
                     new Pedido { Codigo = "CODIGO5", Comprador = "teste", DataPedido = DateTime.Now, TipoFrete = "sedex",
-                        TotalItens = 1, ValorFrete = 0.00, ValorTotal = 0.00, StatusPedido = aguardandoCompradorEscolherFrete},
+                        TotalItens = 1, ValorFrete = 0.00F, ValorTotal = 0.00F, StatusPedido = aguardandoCompradorEscolherFrete},
                     new Pedido { Codigo = "CODIGO6", Comprador = "teste", DataPedido = DateTime.Now, TipoFrete = "sedex",
-                        TotalItens = 1, ValorFrete = 0.00, ValorTotal = 0.00, StatusPedido = pagoEsperandoVendedor}
+                        TotalItens = 1, ValorFrete = 0.00F, ValorTotal = 0.00F, StatusPedido = pagoEsperandoVendedor}
             };
 
             context.Pedidos.AddRange(pedidos);

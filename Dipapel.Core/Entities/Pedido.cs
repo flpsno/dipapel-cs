@@ -31,14 +31,14 @@ namespace Dipapel.Core.Entities
         public int TotalItens { get; set; }
 
         [Column("VALOR_TOTAL", TypeName = "float")]        
-        public double ValorTotal { get; set; }
+        public float ValorTotal { get; set; }
 
         [Column("TIPO_FRETE", TypeName = "varchar")]
         [MaxLength(50)]
         public string TipoFrete { get; set; }
 
         [Column("VALOR_FRETE", TypeName = "float")]
-        public double ValorFrete { get; set; }
+        public float ValorFrete { get; set; }
 
         [Column("IDSTATUS_PEDIDO")]
         public int IdStatusPedido { get; set; }

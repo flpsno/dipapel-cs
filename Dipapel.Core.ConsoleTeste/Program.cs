@@ -15,11 +15,11 @@ namespace Dipapel.Core.ConsoleTeste
         static void Main(string[] args)
         {
 
-
+            var _ctx = new DipapelDataContext();
 
             using (var ctx = new PedidoRepository())
             {
-                var fazImport = false;
+                var fazImport = true;
 
                 if (fazImport)
                 {
@@ -45,6 +45,7 @@ namespace Dipapel.Core.ConsoleTeste
                         var ctxStatusPedido = new StatusPedidoRepository();
 
                         var statusPedido = ctxStatusPedido.ObterByCodigo(campos[2].Trim());
+                        //var statusPedido = new StatusPedido() { Id = 1, Codigo = "teste" }; 
 
                         ctxStatusPedido.Dispose();
 
@@ -54,9 +55,9 @@ namespace Dipapel.Core.ConsoleTeste
                         pedidoAux.IdStatusPedido = statusPedido.Id;
                         pedidoAux.DataPedido = DateTime.Now; // campos[3];
                         pedidoAux.TotalItens = String.IsNullOrEmpty(campos[4].Trim()) ? 0 : int.Parse(campos[4].Trim(), CultureInfo.InvariantCulture.NumberFormat); // hard code
-                        pedidoAux.ValorTotal = String.IsNullOrEmpty(campos[5].Trim()) ? 0.00 : Double.Parse(campos[5].Trim(), CultureInfo.InvariantCulture.NumberFormat);
+                        pedidoAux.ValorTotal = String.IsNullOrEmpty(campos[5].Trim()) ? 0.00F : float.Parse(campos[5].Trim(), CultureInfo.InvariantCulture.NumberFormat);
                         pedidoAux.TipoFrete = campos[6];
-                        pedidoAux.ValorFrete = String.IsNullOrEmpty(campos[7].Trim()) ? 0.00 : Double.Parse(campos[7].Trim(), CultureInfo.InvariantCulture.NumberFormat);
+                        pedidoAux.ValorFrete = String.IsNullOrEmpty(campos[7].Trim()) ? 0.00F : float.Parse(campos[7].Trim(), CultureInfo.InvariantCulture.NumberFormat);
 
                         ctx.Adicionar(pedidoAux);
                     }
