@@ -12,8 +12,9 @@ namespace Dipapel.Core.EF.Repositories
     {
         public StatusPedido ObterByCodigo(string codigo)
         {
-            var statusPedido = (StatusPedido)_ctx.StatusPedidos.Where(b => b.Codigo == codigo);
-            return statusPedido;
+            var listaStatusPedido = Obter();
+            var statusPedido = listaStatusPedido.Where(b => b.Codigo.Contains(codigo));
+            return statusPedido.FirstOrDefault<StatusPedido>();
         }
     }
 }
