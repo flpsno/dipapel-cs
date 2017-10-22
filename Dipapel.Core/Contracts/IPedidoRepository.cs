@@ -9,5 +9,6 @@ namespace Dipapel.Core.Contracts
 {
     public interface IPedidoRepository: IRepository<Pedido>
     {
+        Pedido ObterByCodigo(string codigo);
     }
 }
