@@ -17,6 +17,7 @@ namespace Dipapel.Core.Entities
 
         [Column("CODIGO", TypeName ="varchar")]
         [MaxLength(15)]
+        [Index(IsUnique = true)]
         public string Codigo { get; set; }
 
         [Column("COMPRADOR", TypeName = "varchar")]
@@ -38,6 +39,11 @@ namespace Dipapel.Core.Entities
 
         [Column("VALOR_FRETE", TypeName = "float")]
         public double ValorFrete { get; set; }
-   //     public StatusPedido Status { get; set; }
+
+        [Column("IDSTATUS_PEDIDO")]
+        public int IdStatusPedido { get; set; }
+
+        [ForeignKey("IdStatusPedido")]
+        public virtual StatusPedido StatusPedido { get; set; }
     }
 }

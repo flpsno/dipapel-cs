@@ -8,9 +8,7 @@ namespace Dipapel.Core.Entities
 {
     public abstract class Entity
     {
-        public Entity()
-        {
-           
-        }
+
+        public DateTime DataCadastro { get; private set; } = DateTime.Now;
     }
 }

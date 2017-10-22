@@ -37,10 +37,13 @@ namespace Dipapel.Core.ConsoleTeste
                 {
                     string[] campos = linha.Split(';');
 
+                    var statusPedidoRepo = new StatusPedidoRepository();
+                    var statusPedido = statusPedidoRepo.Adicionar(new StatusPedido() { Codigo = campos[2].Trim(), Descricao = campos[2].Trim() });
+
                     var pedidoAux = new Pedido();
                     pedidoAux.Codigo = campos[0];
                     pedidoAux.Comprador = campos[1];
-                    //pedidoAux.Status = new StatusPedido() { Codigo = campos[2] };
+                    pedidoAux.StatusPedido = statusPedido;
                     pedidoAux.DataPedido = DateTime.Now; // campos[3];
                     pedidoAux.TotalItens = String.IsNullOrEmpty(campos[4].Trim()) ? 0 : int.Parse(campos[4].Trim(), CultureInfo.InvariantCulture.NumberFormat); // hard code
                     pedidoAux.ValorTotal = String.IsNullOrEmpty(campos[5].Trim()) ? 0.00 : Double.Parse(campos[5].Trim(), CultureInfo.InvariantCulture.NumberFormat);
@@ -48,7 +51,9 @@ namespace Dipapel.Core.ConsoleTeste
                     pedidoAux.ValorFrete = String.IsNullOrEmpty(campos[7].Trim()) ? 0.00 : Double.Parse(campos[7].Trim(), CultureInfo.InvariantCulture.NumberFormat); 
 
                     ctx.Adicionar(pedidoAux);
-                    //                pedidoDao.Adicionar(pedidoAux);
+
+                    statusPedidoRepo.Dispose();
+
                 }
             }
 
