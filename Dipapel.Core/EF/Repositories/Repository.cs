@@ -11,7 +11,7 @@ namespace Dipapel.Core.EF.Repositories
     public class Repository<T> : IRepository<T> where T : Entity
     {
         //private List<T> _BancoDeDadosFake = new List<T>();
-        protected readonly DipapelDB _ctx = new DipapelDB();
+        protected readonly DipapelDataContext _ctx = new DipapelDataContext();
 
         public T Adicionar(T obj)
         {

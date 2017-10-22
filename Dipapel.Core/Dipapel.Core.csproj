@@ -52,7 +52,7 @@
     <Compile Include="Contracts\IPedidoRepository.cs" />
     <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="Contracts\IStatusPedidoRepository.cs" />
-    <Compile Include="EF\DipapelDB.cs" />
+    <Compile Include="EF\DipapelDataContext.cs" />
     <Compile Include="EF\Repositories\PedidoRepository.cs" />
     <Compile Include="EF\Repositories\Repository.cs" />
     <Compile Include="EF\Repositories\StatusPedidoRepository.cs" />

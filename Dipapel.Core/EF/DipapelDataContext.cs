@@ -9,9 +9,9 @@ using Dipapel.Core.Entities;
 
 namespace Dipapel.Core.EF
 {
-    public class DipapelDB : DbContext
+    public class DipapelDataContext : DbContext
     {
-        public DipapelDB()
+        public DipapelDataContext()
             : base(Contracts.Constantes.CONNECTION_STRING_PRODUCAO)
         {
             Database.SetInitializer(new CargaInicialDados());
@@ -21,10 +21,10 @@ namespace Dipapel.Core.EF
         public DbSet<StatusPedido> StatusPedidos { get; set; }
     }
 
-    internal class CargaInicialDados : CreateDatabaseIfNotExists<DipapelDB>
+    internal class CargaInicialDados : CreateDatabaseIfNotExists<DipapelDataContext>
     {
 
-        protected override void Seed(DipapelDB context)
+        protected override void Seed(DipapelDataContext context)
         {
             var aguardandoPagamento = new StatusPedido() { Codigo = "AGUARDANDO_PAGAMENTO", Descricao = "Aguardando Pagamento" };
             var pedidoEnviado = new StatusPedido() { Codigo = "PEDIDO_ENVIADO", Descricao = "Pedido Enviado" };
