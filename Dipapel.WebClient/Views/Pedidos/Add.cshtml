@@ -18,6 +18,18 @@
     </div>
 
     <div class="form-group">
+        <label>Status:</label>
+        <select name="IdStatusPedido" class="form-control">
+            <option value="0">Selecione....</option>
+
+            @foreach (var item in ViewBag.ListaStatusPedido)
+            {
+                <option value="@item.Id">@item.Descricao</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
         <label>Data Pedido:</label>
         <input type="date" class="form-control" name="DataPedido" />
     </div>

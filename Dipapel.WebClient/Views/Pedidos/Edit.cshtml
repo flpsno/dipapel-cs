@@ -18,10 +18,25 @@
     </div>
 
     <div class="form-group">
-        <label>Data Pedido:</label>
-        <input type="date" class="form-control" name="DataPedido" value="@Model.DataPedido.ToString("dd/MM/yyyy")" />
+        <label>Status:</label>
+        <select name="IdStatusPedido" class="form-control">
+            <option value="0">Selecione....</option>
+
+            @foreach (var item in ViewBag.ListaStatusPedido)
+            {
+                <option @(item.Id == Model.IdStatusPedido ? "selected" : "")
+                        value="@item.Id">
+                    @item.Descricao
+                    </option>
+            }
+        </select>
     </div>
 
+    <div class="form-group">
+        <label>Data Pedido:</label>
+        <input type="date" class="form-control" name="DataPedido" value="@Model.DataPedido.ToString("yyyy-MM-dd")" />
+    </div>
+   
     <div class="form-group">
         <label>Total de Itens:</label>
         <input type="number" class="form-control" min="0" name="TotalItens" value="@Model.TotalItens" />

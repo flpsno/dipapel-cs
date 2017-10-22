@@ -21,6 +21,13 @@ namespace Dipapel.WebClient.Controllers
 
         public ActionResult Add()
         {
+            var statusRepo = new StatusPedidoRepository();
+
+            var listaStatusPedido = statusRepo.Obter();
+            ViewBag.ListaStatusPedido = listaStatusPedido;
+
+            statusRepo.Dispose();
+
             return View();
         }
 
@@ -36,6 +43,13 @@ namespace Dipapel.WebClient.Controllers
             var pedido = _ctx.ObterById(id);
             if (pedido == null)
                 return HttpNotFound();
+
+            var statusRepo = new StatusPedidoRepository();
+
+            var listaStatusPedido = statusRepo.Obter();
+            ViewBag.ListaStatusPedido = listaStatusPedido;
+
+            statusRepo.Dispose();
 
             return View(pedido);
         }
@@ -59,7 +73,8 @@ namespace Dipapel.WebClient.Controllers
         }
 
         [HttpPost]
-        public ActionResult Delete(Pedido pAux) {
+        public ActionResult Delete(Pedido pAux)
+        {
 
             var pedido = _ctx.ObterById(pAux.Id);
             _ctx.Delete(pedido);
