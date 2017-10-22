@@ -15,7 +15,8 @@ namespace Dipapel.WebClient.Controllers
         // GET: Pedidos
         public ActionResult Index()
         {
-            return View(_ctx.Obter());
+            var pedidos = _ctx.Obter();
+            return View(pedidos);
         }
 
         public ActionResult Add()
@@ -64,6 +65,11 @@ namespace Dipapel.WebClient.Controllers
             _ctx.Delete(pedido);
 
             return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _ctx.Dispose();
         }
     }
 }
