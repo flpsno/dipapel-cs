@@ -32,7 +32,6 @@
             this.btnCarregarArquivo = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.btnProcessarArquivo = new System.Windows.Forms.Button();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.SuspendLayout();
             // 
             // txtFilePath
@@ -55,6 +54,7 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "CSV Files | *.csv;";
             // 
             // btnProcessarArquivo
             // 
@@ -87,7 +87,6 @@
         private System.Windows.Forms.Button btnCarregarArquivo;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button btnProcessarArquivo;
-        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }
 

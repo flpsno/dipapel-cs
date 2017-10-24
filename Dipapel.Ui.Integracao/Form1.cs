@@ -56,7 +56,6 @@ namespace Dipapel.Ui.Integracao
                         {
 
                             var statusPedido = ctxStatusPedido.ObterByCodigo(campos[2].Trim());
-                            //var statusPedido = new StatusPedido() { Id = 1, Codigo = "teste" }; 
 
                             var pedidoAux = new Pedido();
                             pedidoAux.Codigo = campos[0];
