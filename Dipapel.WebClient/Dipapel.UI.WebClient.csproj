@@ -161,7 +161,6 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config" />
-    <None Include="Properties\PublishProfiles\dipapel - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\dipapel - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

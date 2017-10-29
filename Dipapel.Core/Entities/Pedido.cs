@@ -45,5 +45,8 @@ namespace Dipapel.Core.Entities
 
         [ForeignKey("IdStatusPedido")]
         public virtual StatusPedido StatusPedido { get; set; }
+
+        [NotMapped]
+        public string StatusSTR { get; set; }
     }
 }
