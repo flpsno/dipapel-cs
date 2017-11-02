@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dipapel.Core.Contracts;
 using Dipapel.Core.Entities;
+using Dipapel.Core.Helpers;
 
 namespace Dipapel.Core.EF
 {
@@ -19,6 +20,7 @@ namespace Dipapel.Core.EF
 
         public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<StatusPedido> StatusPedidos { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
     }
 
     public class CargaInicialDados : CreateDatabaseIfNotExists<DipapelDataContext>
@@ -49,6 +51,10 @@ namespace Dipapel.Core.EF
             };
 
             context.Pedidos.AddRange(pedidos);
+
+            var felipe = new Usuario() { NOME = "Felipe", Email = "flpsno@hotmail.com", Senha = "metal001".Encrypt(), Habilitado = true };
+            context.Usuarios.Add(felipe);
+
             context.SaveChanges();
         }
     }

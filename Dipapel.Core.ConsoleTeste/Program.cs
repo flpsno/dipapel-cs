@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dipapel.Core.Helpers;
 
 namespace Dipapel.Core.ConsoleTeste
 {
@@ -15,7 +16,14 @@ namespace Dipapel.Core.ConsoleTeste
         static void Main(string[] args)
         {
 
-            var _ctx = new DipapelDataContext();
+            /*using (var ctx = new UsuarioRepository())
+            {
+                var felipe = new Usuario() { NOME = "Felipe", Email = "flpsno@hotmail.com", Senha = "metal001".Encrypt(), Habilitado = true };
+
+                ctx.Adicionar(felipe);
+
+            }*/
+
 
             using (var ctx = new PedidoRepository())
             {
