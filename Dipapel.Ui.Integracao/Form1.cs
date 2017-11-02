@@ -14,11 +14,13 @@ using System.Windows.Forms;
 
 namespace Dipapel.Ui.Integracao
 {
-    public partial class Form1 : Form
+    public partial class frmPrincipal : Form
     {
         private List<Pedido> _pedidos = new List<Pedido>();
+        private int _pedidosNovos = 0;
+        private int _pedidosEditados = 0;
 
-        public Form1()
+        public frmPrincipal()
         {
             InitializeComponent();
         }
@@ -50,6 +52,8 @@ namespace Dipapel.Ui.Integracao
         private void CarregarArquivo()
         {
             _pedidos.Clear();
+            _pedidosNovos = 0;
+            _pedidosEditados = 0;
 
             if (!File.Exists(txtFilePath.Text.Trim()))
                 return;
@@ -92,31 +96,61 @@ namespace Dipapel.Ui.Integracao
 
         private void AtualizarDadosTela()
         {
-            lblTotalPedidos.Text = _pedidos.Count().ToString();
+            AtualizarLabels();
             var bindingList = new BindingList<Pedido>(_pedidos);
             var source = new BindingSource(bindingList, null);
             dtgvPedidos.DataSource = source;
         }
 
+        private void AtualizarLabels()
+        {
+            lblTotalPedidos.Text = _pedidos.Count().ToString();
+            lblNovos.Text = _pedidosNovos.ToString();
+            lblEditados.Text = _pedidosEditados.ToString();
+        }
+
         private void ProcessarPedidos(string[] textLines)
         {
+            _pedidosNovos = 0;
+            _pedidosEditados = 0;
+
+            pgbPedidos.Minimum = 0;
+            pgbPedidos.Maximum = _pedidos.Count();
+
             using (var ctxPedidoRepository = new PedidoRepository())
             {
+                var i = 1;
+
                 foreach (var pedido in _pedidos)
                 {
+                    pgbPedidos.Value = i;
+                    i += 1;
 
                     using (var ctxStatusPedido = new StatusPedidoRepository())
                     {
                         var statusPedido = ctxStatusPedido.ObterByCodigo(pedido.StatusSTR);
                         pedido.IdStatusPedido = statusPedido.Id;
-
-                        if (ctxPedidoRepository.ObterByCodigo(pedido.Codigo) == null)
-                            ctxPedidoRepository.Adicionar(pedido);
-                        else
-                            ctxPedidoRepository.Editar(pedido);
                     }
+
+                    // se não encontrar pelo código, adiciona
+                    var pedidoAux = ctxPedidoRepository.ObterByCodigo(pedido.Codigo);
+                    if (pedidoAux == null)
+                    {
+                        ctxPedidoRepository.Adicionar(pedido);
+                        _pedidosNovos += 1;
+                    }
+                    // senão edita existente
+                    else
+                    {
+                        pedidoAux.IdStatusPedido = pedido.IdStatusPedido;
+                        ctxPedidoRepository.Editar(pedidoAux);
+                        _pedidosEditados += 1;
+                    }
+
+                    AtualizarLabels();
                 }
             }
+            MessageBox.Show("Processamento finalizado!");
         }
 
         private void Form1_Shown(object sender, EventArgs e)
@@ -126,7 +160,6 @@ namespace Dipapel.Ui.Integracao
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
         }
 
         private void progressBar1_Click(object sender, EventArgs e)

@@ -1,6 +1,6 @@
 ﻿namespace Dipapel.Ui.Integracao
 {
-    partial class Form1
+    partial class frmPrincipal
     {
         /// <summary>
         /// Required designer variable.
@@ -36,6 +36,10 @@
             this.lblTotalPedidos = new System.Windows.Forms.Label();
             this.dtgvPedidos = new System.Windows.Forms.DataGridView();
             this.pgbPedidos = new System.Windows.Forms.ProgressBar();
+            this.lblNovos = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblEditados = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvPedidos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,11 +116,51 @@
             this.pgbPedidos.TabIndex = 6;
             this.pgbPedidos.Click += new System.EventHandler(this.progressBar1_Click);
             // 
-            // Form1
+            // lblNovos
+            // 
+            this.lblNovos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNovos.Location = new System.Drawing.Point(280, 40);
+            this.lblNovos.Name = "lblNovos";
+            this.lblNovos.Size = new System.Drawing.Size(35, 25);
+            this.lblNovos.TabIndex = 8;
+            this.lblNovos.Text = "10";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(233, 45);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Novos:";
+            // 
+            // lblEditados
+            // 
+            this.lblEditados.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEditados.Location = new System.Drawing.Point(496, 40);
+            this.lblEditados.Name = "lblEditados";
+            this.lblEditados.Size = new System.Drawing.Size(35, 25);
+            this.lblEditados.TabIndex = 10;
+            this.lblEditados.Text = "10";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(439, 45);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(51, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Editados:";
+            // 
+            // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(694, 423);
+            this.Controls.Add(this.lblEditados);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblNovos);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.pgbPedidos);
             this.Controls.Add(this.dtgvPedidos);
             this.Controls.Add(this.lblTotalPedidos);
@@ -124,7 +168,7 @@
             this.Controls.Add(this.btnProcessarArquivo);
             this.Controls.Add(this.btnCarregarArquivo);
             this.Controls.Add(this.txtFilePath);
-            this.Name = "Form1";
+            this.Name = "frmPrincipal";
             this.Text = "Dipapel - Integração";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
@@ -144,6 +188,10 @@
         private System.Windows.Forms.Label lblTotalPedidos;
         private System.Windows.Forms.DataGridView dtgvPedidos;
         private System.Windows.Forms.ProgressBar pgbPedidos;
+        private System.Windows.Forms.Label lblNovos;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblEditados;
+        private System.Windows.Forms.Label label5;
     }
 }
 
