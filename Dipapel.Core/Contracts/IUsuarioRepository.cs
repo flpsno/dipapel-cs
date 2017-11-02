@@ -9,5 +9,6 @@ namespace Dipapel.Core.Contracts
 {
     public interface IUsuarioRepository : IRepository<Usuario>
     {
+        Usuario ObterByEmail(string codigo);
     }
 }

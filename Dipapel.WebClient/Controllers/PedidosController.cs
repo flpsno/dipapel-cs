@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace Dipapel.WebClient.Controllers
 {
+    [Authorize]
     public class PedidosController : Controller
     {
         private PedidoRepository _ctx = new PedidoRepository();

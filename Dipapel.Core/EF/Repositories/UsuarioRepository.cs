@@ -10,6 +10,10 @@ namespace Dipapel.Core.EF.Repositories
 {
     public class UsuarioRepository : Repository<Usuario>, IUsuarioRepository
     {
-
+        public Usuario ObterByEmail(string codigo)
+        {
+            var usuario = _ctx.Usuarios.Where(p => p.Email.Contains(codigo));
+            return usuario.FirstOrDefault<Usuario>();
+        }
     }
 }

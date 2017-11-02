@@ -24,7 +24,38 @@
                     <li>@Html.ActionLink("Principal", "Index", "Home")</li>
                     <li>@Html.ActionLink("Sobre", "About", "Home")</li>
                     <li>@Html.ActionLink("Contato", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Pedidos", "Index", "Pedidos")</li>
+                    @if (User.Identity.IsAuthenticated)
+            {
+                        <li>@Html.ActionLink("Pedidos", "Index", "Pedidos")</li>
+                    }
+                    
+                </ul>
+
+                <ul class="navbar-nav ml-auto">
+                    @if (!User.Identity.IsAuthenticated)
+            {
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Login", "Conta")">Login</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Olá @User.Identity.Name
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="@Url.Action("MeuPerfil", "Conta")">Meu perfil</a>
+                                <a class="dropdown-item" href="@Url.Action("Index", "Logs")">Log</a>
+                                <div class="dropdown-divider"></div>
+                                <button id="senhaBtn" class="dropdown-item btn btn-link">Alterar minha senha</button>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="@Url.Action("Logoff", "Conta")">Sair</a>
+                            </div>
+
+                        </li>
+                    }
+
                 </ul>
             </div>
         </div>
