@@ -17,7 +17,7 @@ namespace Dipapel.WebClient.Controllers
         public ActionResult Index()
         {
             var pedidos = _ctx.Obter();
-            return View(pedidos);
+            return View(pedidos.OrderByDescending(p => p.DataPedido));
         }
 
         public ActionResult Add()
