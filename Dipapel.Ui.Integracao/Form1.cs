@@ -86,7 +86,7 @@ namespace Dipapel.Ui.Integracao
                     _pedidos.Add(pedidoAux);
                 }
             }
-            catch (IOException e)
+            catch (IOException) 
             {
 
             }
