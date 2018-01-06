@@ -1,13 +1,10 @@
-﻿using Dipapel.Core.EF;
-using Dipapel.Core.EF.Repositories;
-using Dipapel.Core.Entities;
+﻿using Dipapel.Core.EF.Repositories;
+//using Dipapel.Core.Entities;
+using Dipapel.Domain.Models;
+using Dipapel.Infraestructure.ADO.Repositories;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dipapel.Core.Helpers;
 
 namespace Dipapel.Core.ConsoleTeste
 {
@@ -15,6 +12,13 @@ namespace Dipapel.Core.ConsoleTeste
     {
         static void Main(string[] args)
         {
+
+            using (var pedidoRepo = new PedidoADORepository())
+            {
+                var pedido = pedidoRepo.GetByID(244);
+                Console.WriteLine("id: {0} - Comprador: {1} - Data Pedido: {2}", pedido.Id, pedido.Comprador, pedido.DataPedido.ToString("dd/MM/yyyy"));
+
+            }
 
             /*using (var ctx = new UsuarioRepository())
             {
@@ -25,7 +29,7 @@ namespace Dipapel.Core.ConsoleTeste
             }*/
 
 
-            using (var ctx = new PedidoRepository())
+            /*using (var ctx = new PedidoRepository())
             {
                 var fazImport = true;
 
@@ -80,8 +84,8 @@ namespace Dipapel.Core.ConsoleTeste
                 }
 
 
-            }
-            Console.ReadLine();
+            }*/
+            Console.ReadKey();
         }
     }
 }

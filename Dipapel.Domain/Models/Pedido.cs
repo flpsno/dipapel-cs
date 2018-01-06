@@ -9,9 +9,9 @@ namespace Dipapel.Domain.Models
         public string Comprador { get; set; }
         public DateTime DataPedido { get; set; }
         public int TotalItens { get; set; }
-        public float ValorTotal { get; set; }
+        public Double ValorTotal { get; set; }
         public string TipoFrete { get; set; }
-        public float ValorFrete { get; set; }
+        public Double ValorFrete { get; set; }
         public int IdStatusPedido { get; set; }
     }
 }
