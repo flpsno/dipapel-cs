@@ -12,11 +12,36 @@ namespace Dipapel.Core.ConsoleTeste
     {
         static void Main(string[] args)
         {
+            var sIDPedido = "-1";
 
             using (var pedidoRepo = new PedidoADORepository())
             {
-                var pedido = pedidoRepo.GetByID(244);
-                Console.WriteLine("id: {0} - Comprador: {1} - Data Pedido: {2}", pedido.Id, pedido.Comprador, pedido.DataPedido.ToString("dd/MM/yyyy"));
+
+                while (!string.IsNullOrEmpty(sIDPedido))
+                {
+                    Console.Write("Digite o id do pedido: ");
+                    sIDPedido = Console.ReadLine();
+
+                    if (string.IsNullOrEmpty(sIDPedido))
+                        break;
+
+                    if (Int32.TryParse(sIDPedido, out int iIDPedido))
+                    {
+                        pedidoRepo.Delete(new Pedido() { Id = iIDPedido });
+                        var pedido = pedidoRepo.GetByID(iIDPedido);
+
+                        if (pedido.Id == 0)
+                            Console.WriteLine("Pedido não encontrado");
+                        else
+                            Console.WriteLine("id: {0} - Comprador: {1} - Data Pedido: {2}", pedido.Id, pedido.Comprador, pedido.DataPedido.ToString("dd/MM/yyyy"));
+                    }
+                    else
+                    {
+                        Console.WriteLine("Número inválido!");
+                        sIDPedido = "-1";
+                    }
+
+                }
 
             }
 

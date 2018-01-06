@@ -12,7 +12,24 @@ namespace Dipapel.Infraestructure.ADO.Repositories
 
         public void Delete(Pedido pedido)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _ctx.OpenDB();
+                var sql = "DELETE FROM tblpedidos WHERE IDPEDIDO = @IDPEDIDO";
+                var cmd = new MySqlCommand(sql, _ctx.Connection);
+                cmd.Parameters.AddWithValue("@IDPEDIDO", pedido.Id);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                _ctx.CloseDB();
+            }
+
         }
 
         public Pedido Edit(Pedido pedido)
@@ -56,8 +73,13 @@ namespace Dipapel.Infraestructure.ADO.Repositories
             {
 
                 throw ex;
-            }      
-        
+            }
+            finally
+            {
+                _ctx.CloseDB();
+
+            }
+
         }
 
         public Pedido Insert(Pedido pedido)
@@ -86,6 +108,10 @@ namespace Dipapel.Infraestructure.ADO.Repositories
             catch (Exception ex)
             {
                 throw ex;
+            }
+            finally
+            {
+                _ctx.CloseDB();
             }
 
             return pedido;

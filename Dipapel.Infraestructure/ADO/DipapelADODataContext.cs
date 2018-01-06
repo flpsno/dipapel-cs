@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Data;
 
 namespace Dipapel.Infraestructure.ADO
 {
@@ -13,11 +14,13 @@ namespace Dipapel.Infraestructure.ADO
             Connection = new MySqlConnection(_connectionString);
         }
 
-        public void OpenDB() {
+        public void OpenDB()
+        {
 
             try
             {
-                Connection.Open();
+                if (Connection.State != ConnectionState.Open)
+                    Connection.Open();
             }
             catch (System.Exception)
             {
@@ -26,10 +29,12 @@ namespace Dipapel.Infraestructure.ADO
             }
         }
 
-        public void CloseDB() {
+        public void CloseDB()
+        {
             try
             {
-                Connection.Close();
+                if (Connection.State == ConnectionState.Open)
+                    Connection.Close();
             }
             catch (System.Exception)
             {
